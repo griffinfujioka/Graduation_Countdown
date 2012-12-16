@@ -1,0 +1,25 @@
+﻿<common:LayoutAwarePage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GraduationCountdown"
+    xmlns:common="using:GraduationCountdown.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="using:Callisto.Controls"
+    x:Name="pageRoot"
+    x:Class="GraduationCountdown.MainPage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+
+    <Grid x:Name="LayoutRoot" Background="Black">
+
+        <Popup x:Name="datePopUp" Visibility="Visible" AllowDrop="False" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="400" Height="300">
+            <Grid Height="300" Width="400" Background="White">
+                <TextBlock Text="Welcome to Graduation Countdown!" FontSize="22" HorizontalAlignment="Left" Margin="11,9,0,258" Foreground="Black"/>
+                <TextBlock Text="Enter graduation date: " FontSize="16" HorizontalAlignment="Left" Margin="11,48,0,228" Foreground="Black" Height="24" Width="169"  />
+            </Grid>
+        </Popup>
+        
+    </Grid>
+</common:LayoutAwarePage>
