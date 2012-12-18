@@ -14,10 +14,75 @@
 
     <Grid x:Name="LayoutRoot" Background="Black">
 
+        
         <Popup x:Name="datePopUp" Visibility="Visible" AllowDrop="False" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="400" Height="300">
             <Grid Height="300" Width="400" Background="White">
                 <TextBlock Text="Welcome to Graduation Countdown!" FontSize="22" HorizontalAlignment="Left" Margin="11,9,0,258" Foreground="Black"/>
                 <TextBlock Text="Enter graduation date: " FontSize="16" HorizontalAlignment="Left" Margin="11,48,0,228" Foreground="Black" Height="24" Width="169"  />
+                <StackPanel Orientation="Horizontal" Margin="0,77,0,191">
+                    <TextBlock Text="Month" FontSize="16" Foreground="Black" HorizontalAlignment="Left" Width="95" Margin="8,0,8,0" />
+                    <TextBlock Text="Day" FontSize="16" Foreground="Black" HorizontalAlignment="Left" Width="58" Margin="8,0,8,0" />
+                    <TextBlock Text="Year" FontSize="16" Foreground="Black" HorizontalAlignment="Left" Width="42" Margin="8,0,8,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,109,0,0">
+                    <ComboBox x:Name="monthComboBox" Height="37" VerticalAlignment="Top" Width="120" Margin="8,0,8,0" Foreground="Black">
+                        <x:String>January</x:String>
+                        <x:String>February</x:String>
+                        <x:String>March</x:String>
+                        <x:String>April</x:String>
+                        <x:String>May</x:String>
+                        <x:String>June</x:String>
+                        <x:String>July</x:String>
+                        <x:String>August</x:String>
+                        <x:String>September</x:String>
+                        <x:String>October</x:String>
+                        <x:String>November</x:String>
+                        <x:String>December</x:String>
+                    </ComboBox>
+                    <ComboBox x:Name="dayComboBox" VerticalAlignment="Top" Margin="8,0,8,0" Foreground="Black" Width="60">
+                        <x:Int32>1</x:Int32>
+                        <x:Int32>2</x:Int32>
+                        <x:Int32>3</x:Int32>
+                        <x:Int32>4</x:Int32>
+                        <x:Int32>5</x:Int32>
+                        <x:Int32>6</x:Int32>
+                        <x:Int32>7</x:Int32>
+                        <x:Int32>8</x:Int32>
+                        <x:Int32>9</x:Int32>
+                        <x:Int32>10</x:Int32>
+                        <x:Int32>11</x:Int32>
+                        <x:Int32>12</x:Int32>
+                        <x:Int32>13</x:Int32>
+                        <x:Int32>14</x:Int32>
+                        <x:Int32>15</x:Int32>
+                        <x:Int32>16</x:Int32>
+                        <x:Int32>17</x:Int32>
+                        <x:Int32>18</x:Int32>
+                        <x:Int32>19</x:Int32>
+                        <x:Int32>20</x:Int32>
+                        <x:Int32>21</x:Int32>
+                        <x:Int32>22</x:Int32>
+                        <x:Int32>23</x:Int32>
+                        <x:Int32>24</x:Int32>
+                        <x:Int32>25</x:Int32>
+                        <x:Int32>26</x:Int32>
+                        <x:Int32>27</x:Int32>
+                        <x:Int32>28</x:Int32>
+                        <x:Int32>29</x:Int32>
+                        <x:Int32>30</x:Int32>
+                        <x:Int32>31</x:Int32>
+                    </ComboBox>
+                    <ComboBox x:Name="yearComboBox" VerticalAlignment="Top" Margin="8,0,8,0" Width="80">
+                        <x:Int32>2013</x:Int32>
+                        <x:Int32>2014</x:Int32>
+                        <x:Int32>2015</x:Int32>
+                        <x:Int32>2016</x:Int32>
+                        <x:Int32>2017</x:Int32>
+                        <x:Int32>2018</x:Int32>
+                        <x:Int32>2019</x:Int32>
+                    </ComboBox>
+                </StackPanel>
+                <Button x:Name="saveDateBtn" Content="Save date" BorderThickness="0" Foreground="Black" Margin="8,10,8,10" VerticalAlignment="Bottom" Click="saveDateBtn_Click"/>
             </Grid>
         </Popup>
         

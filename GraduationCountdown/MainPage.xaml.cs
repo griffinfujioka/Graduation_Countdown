@@ -31,6 +31,11 @@ namespace GraduationCountdown
             this.InitializeComponent();
             appSettings = ApplicationData.Current.LocalSettings.Values;
 
+            #region Initialize all selected values in the graduation date popup
+            monthComboBox.SelectedIndex = 0;
+            dayComboBox.SelectedIndex = 0;
+            yearComboBox.SelectedIndex = 0;
+            #endregion 
 
             if (!appSettings.ContainsKey(dateKey))
             {
@@ -63,6 +68,11 @@ namespace GraduationCountdown
         /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
+        }
+
+        private void saveDateBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
