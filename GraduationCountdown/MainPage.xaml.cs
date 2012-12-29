@@ -247,6 +247,7 @@ namespace GraduationCountdown
         #region Change date button clicked
         private void changeDateBtn_Click(object sender, RoutedEventArgs e)
         {
+            
             untilTxtBlock.Visibility = Visibility.Collapsed;
             countdownTxtBlock.Visibility = Visibility.Collapsed; 
             datePopUp.IsOpen = true;
@@ -259,5 +260,21 @@ namespace GraduationCountdown
             datePopUp.IsOpen = false; 
         }
         #endregion 
+
+        #region About button clicked
+        private void aboutBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AboutPage));
+        }
+        #endregion
+
+        #region Settings button clicked
+        private void settingsBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SettingsPage));
+        }
+        #endregion
     }
+
+
 }
