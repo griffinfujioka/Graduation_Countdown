@@ -1,39 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-
-  <Identity Name="58cebc7e-560d-4bce-a248-b648075d065f"
-            Publisher="CN=Griffin"
-            Version="1.0.0.0" />
-
+  <Identity Name="58cebc7e-560d-4bce-a248-b648075d065f" Publisher="CN=Griffin" Version="1.0.0.0" />
   <Properties>
     <DisplayName>GraduationCountdown</DisplayName>
     <PublisherDisplayName>Griffin</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\StoreIcon.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.2.1</OSMinVersion>
     <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="GraduationCountdown.App">
-        <VisualElements
-            DisplayName="GraduationCountdown"
-            Logo="Assets\Logo.png"
-            SmallLogo="Assets\SmallLogo.png"
-            Description="GraduationCountdown"
-            ForegroundText="light"
-            BackgroundColor="#464646">
-            <DefaultTile ShowName="allLogos" />
-            <SplashScreen Image="Assets\SplashScreen.png" />
-        </VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="GraduationCountdown.App">
+      <VisualElements DisplayName="GraduationCountdown" Logo="Assets\Square Icon.png" SmallLogo="Assets\Small Icon.png" Description="GraduationCountdown" ForegroundText="light" BackgroundColor="#0099FF">
+        <LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
+        <DefaultTile ShowName="allLogos" WideLogo="Assets/WideIcon.png" />
+        <SplashScreen Image="Assets/Splash Screen.png" BackgroundColor="#0099FF" />
+      </VisualElements>
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Clock.WinRT.TileSchedulerTask">
+          <BackgroundTasks>
+            <Task Type="systemEvent" />
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>

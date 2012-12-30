@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Storage;          // for ApplicationData
 using Windows.Globalization.DateTimeFormatting; // datetime formatting
 using Windows.ApplicationModel.Background;      // background tasks 
+using Windows.UI; 
 using Clock.WinRT;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
@@ -32,7 +33,7 @@ namespace GraduationCountdown
         private const string TASKNAMEUSERPRESENT = "TileSchedulerTaskUserPresent";
         private const string TASKNAMETIMER = "TileSchedulerTaskTimer";
         private const string TASKENTRYPOINT = "Clock.WinRT.TileSchedulerTask";
-        public static DateTime GraduationDate = new DateTime();
+        public static DateTime GraduationDate;// = new DateTime();
         private DispatcherTimer timer;
         #endregion 
 
@@ -75,7 +76,7 @@ namespace GraduationCountdown
         #region OnNavigatedTo
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+            grid.Background = new SolidColorBrush(Color.FromArgb(255, 0, 153, 255));    // Black
         }
         #endregion 
 
@@ -247,16 +248,26 @@ namespace GraduationCountdown
         #region Change date button clicked
         private void changeDateBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            untilTxtBlock.Visibility = Visibility.Collapsed;
-            countdownTxtBlock.Visibility = Visibility.Collapsed; 
-            datePopUp.IsOpen = true;
+            if (datePopUp.IsOpen)   // If the popup is already open 
+            {
+                untilTxtBlock.Visibility = Visibility.Visible;
+                countdownTxtBlock.Visibility = Visibility.Visible; 
+                datePopUp.IsOpen = false;   // close it 
+            }
+            else
+            {
+                untilTxtBlock.Visibility = Visibility.Collapsed;
+                countdownTxtBlock.Visibility = Visibility.Collapsed;
+                datePopUp.IsOpen = true;
+            }
         }
         #endregion 
 
         #region datePopup Cancel Button Clicked
         private void cancelBtn_Click_1(object sender, RoutedEventArgs e)
         {
+            untilTxtBlock.Visibility = Visibility.Visible;
+            countdownTxtBlock.Visibility = Visibility.Visible; 
             datePopUp.IsOpen = false; 
         }
         #endregion 
@@ -274,6 +285,11 @@ namespace GraduationCountdown
             this.Frame.Navigate(typeof(SettingsPage));
         }
         #endregion
+
+        private void datePopUp_Closed(object sender, object e)
+        {
+
+        }
     }
 
 
