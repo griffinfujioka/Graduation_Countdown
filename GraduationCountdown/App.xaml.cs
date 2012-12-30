@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using GraduationCountdown.Common; 
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -71,6 +72,7 @@ namespace GraduationCountdown
             }
             // Ensure the current window is active
             Window.Current.Activate();
+            MainPage.CreateClockTask(); 
         }
 
         /// <summary>
@@ -85,6 +87,7 @@ namespace GraduationCountdown
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+            MainPage.CreateClockTask(); 
         }
     }
 }

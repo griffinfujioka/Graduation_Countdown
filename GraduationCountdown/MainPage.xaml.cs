@@ -31,8 +31,8 @@ namespace GraduationCountdown
         private Windows.Foundation.Collections.IPropertySet appSettings;
         private const string dateKey = "dateKey";
         private const string TASKNAMEUSERPRESENT = "TileSchedulerTaskUserPresent";
-        private const string TASKNAMETIMER = "TileSchedulerTaskTimer";
-        private const string TASKENTRYPOINT = "Clock.WinRT.TileSchedulerTask";
+        private const string TASKNAMETIMER = "TileSchedulerTaskTimerGraduation";
+        private const string TASKENTRYPOINT = "Clock.WinRT.TileSchedulerTaskGraduation";
         public static DateTime GraduationDate;// = new DateTime();
         private DispatcherTimer timer;
         #endregion 
@@ -67,7 +67,8 @@ namespace GraduationCountdown
                 int month = Convert.ToInt32(dateArray[0]);
                 int day = Convert.ToInt32(dateArray[1]);
                 int year = Convert.ToInt32(dateArray[2]);
-                GraduationDate = new DateTime(year, month, day); 
+                GraduationDate = new DateTime(year, month, day);
+                //Clock.WinRT.ClockTileScheduler.SetGraduationDate(year, month, day); 
             }
             #endregion 
         }
@@ -81,7 +82,7 @@ namespace GraduationCountdown
         #endregion 
 
         #region OnLoaded
-        private async void OnLoaded(object sender, RoutedEventArgs e)
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
             int CurrentYear = DateTime.Now.Year;                /* Get Current Year */
             DateTime NewYear = new DateTime(DateTime.Now.Year + 1, 1, 1);
@@ -95,8 +96,8 @@ namespace GraduationCountdown
 
             try
             {
-                timer.Start(); 
-                
+                timer.Start();
+                CreateClockTask();
             }
             catch (Exception ex)
             {
@@ -105,16 +106,33 @@ namespace GraduationCountdown
         #endregion 
 
         #region CreateClockTask
-        private static async void CreateClockTask()
+        public static async void CreateClockTask()
         {
-            var result = await BackgroundExecutionManager.RequestAccessAsync();
-            if (result == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
-                result == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity)
+            try
             {
-                ClockTileScheduler.CreateSchedule();
 
-                EnsureUserPresentTask();
-                EnsureTimerTask();
+                var result = await BackgroundExecutionManager.RequestAccessAsync();
+                if (result == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
+                    result == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity)
+                {
+                    foreach (var task in BackgroundTaskRegistration.AllTasks)
+                    {
+                        if (task.Value.Name == TASKNAMEUSERPRESENT)
+                            task.Value.Unregister(true);
+                    }
+                    ClockTileScheduler.CreateSchedule();
+
+                    BackgroundTaskBuilder builder = new BackgroundTaskBuilder();
+                    builder.Name = TASKNAMEUSERPRESENT;
+                    builder.TaskEntryPoint = TASKENTRYPOINT;
+                    builder.SetTrigger(new SystemTrigger(SystemTriggerType.UserPresent, false));
+                    builder.Register();
+                    var registration = builder.Register();
+                }
+            }
+            catch
+            {
+
             }
         }
         #endregion 
@@ -126,6 +144,7 @@ namespace GraduationCountdown
                 if (task.Value.Name == TASKNAMEUSERPRESENT)
                     return;
 
+            IBackgroundTrigger trigger = new TimeTrigger(15, false);   
             BackgroundTaskBuilder builder = new BackgroundTaskBuilder();
             builder.Name = TASKNAMETIMER;
             builder.TaskEntryPoint = TASKENTRYPOINT;
@@ -290,6 +309,8 @@ namespace GraduationCountdown
         {
 
         }
+
+
     }
 
 

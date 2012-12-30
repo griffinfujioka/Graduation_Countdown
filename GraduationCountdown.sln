@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraduationCountdown", "GraduationCountdown\GraduationCountdown.csproj", "{871901AD-8DAB-4F84-B8E4-3A70693F8A27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clock.WinRT", "..\ChristmasCountdown\Clock.WinRT\Clock.WinRT.csproj", "{846F7825-D5D0-40AC-8F44-F7B3656D4F0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clock.WinRT", "Clock.WinRT\Clock.WinRT.csproj", "{846F7825-D5D0-40AC-8F44-F7B3656D4F0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

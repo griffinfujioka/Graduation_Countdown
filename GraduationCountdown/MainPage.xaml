@@ -40,7 +40,7 @@
 
                 
                     <StackPanel x:Name="stackPanel1" Orientation="Vertical" Grid.Row="1" Grid.Column="0" Width="100" HorizontalAlignment="left">
-                    <TextBlock x:Name="textBlock1" Text="Month" FontSize="16" Foreground="Black" HorizontalAlignment="Left" Width="82" Margin="10,10,10,5"/>
+                   
                     <ComboBox x:Name="monthComboBox" Height="35" VerticalAlignment="Top" Width="100" Margin="5,10,5,0" Foreground="Black" >
                         <x:String>January</x:String>
                         <x:String>February</x:String>
@@ -58,7 +58,7 @@
               
                 </StackPanel>
                 <StackPanel x:Name="stackPanel2" Orientation="Vertical" Grid.Row="1" Grid.Column="1" Width="100" HorizontalAlignment="Center">
-                    <TextBlock x:Name="textBlock2" Text="Day" FontSize="16" Foreground="Black" HorizontalAlignment="Left" Width="58" Margin="10,10,10,5" />
+                    
                     <ComboBox x:Name="dayComboBox" VerticalAlignment="Top" Foreground="Black" Width="100" Height="35" Margin="5,10,5,0">
                         <x:Int32>1</x:Int32>
                         <x:Int32>2</x:Int32>
@@ -95,7 +95,7 @@
                 </StackPanel>
 
                 <StackPanel x:Name="stackPanel3" Orientation="Vertical" Grid.Row="1" Grid.Column="2" Width="100" HorizontalAlignment="Right">
-                    <TextBlock x:Name="textBlock3" Text="Year" FontSize="16" Foreground="Black"  Width="58" HorizontalAlignment="Left" Margin="10,10,10,5" />
+                    
                     <ComboBox x:Name="yearComboBox"  Width="100" Height="35"  Margin="5,10,5,0">
                         <x:Int32>2013</x:Int32>
                         <x:Int32>2014</x:Int32>
